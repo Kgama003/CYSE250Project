@@ -1,0 +1,44 @@
+# establishing dictionaries
+recommendation={'romance':'Pride and Prejudice, Outlander, Jane Eyre, Gone with the Wind, Sense and Sensibility',
+                'fantasy':'Alice’s Adventures in Wonderland, The King of Elfland’s Daughter, The Hobbit, The Sword in the Stone, The Lion, the Witch, and the Wardrobe',
+                'thriller':'The Name of the Rose, The Hound of the Baskervilles, The Murder of Roger Ackroyd, The Shadow of the Wind, The Woman in White',
+                'non-fiction': 'The Elements of Style, In Cold Blood, I know why the Caged Bird Sings, Fast Food Nation:The Dark Side of the All-American Meal, The Omnivores Dilemma: A Natural History of Four Meals',
+                'science fiction':'Dune, Enders Game, The Hitchhickers Guide to the Galaxy, 1984, Fahrenheit 451'}
+
+files={'romance':'Romance.txt',
+       'fantasy':'Fantasy.txt',
+       'thriller':'Fantasy.txt',
+       'non-fiction':'Non-fiction.txt',
+       'science fiction':'Science fiction.txt'}
+
+def displayContents(x):
+    if x in files:
+        s= files.get(x)
+        filename=s
+        f= open(filename, 'r')
+        for filecontents in f:
+             print(filecontents)
+    
+def main():   
+    genre= input("enter a book genre: ")
+    if genre in recommendation: 
+        print ("You have selected book recommendations for ", genre)
+        print(recommendation.get(genre))        
+    else: 
+        print ("Recommendations for the genre you have selected are not currently available. Please select from the following: Romance, Fantasy, Thriller, Non-fiction, Science Fiction.")
+    
+    anotherSelect=input("Would you more information on these books?")
+    while anotherSelect != str("yes") or anotherSelect != str("no"):
+        print("Please select yes or no")
+        inp=str(input())
+        if inp== str("yes"):
+            print("Here are brief snyopses of the books")
+            print(displayContents(genre))
+            break
+        elif inp==str("no"):
+            print("Thank you. Have a nice day!")
+            quit()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,19 @@
+import socket
+HOST = 'local host' 
+PORT = 5005
+BUFSIZE = 1024
+ADDRESS = (HOST,PORT)
+
+client=socket.socket()
+client.connect(ADDRESS)
+s=client.recv(BUFSIZE).decode
+print(s)
+while True:
+    message=input(">")
+    client.send(message.encode())
+    reply=(client.recv(BUFSIZE)).decode
+    if not reply: 
+        print("server disconnencted")
+        break
+    else: 
+        print(reply)
